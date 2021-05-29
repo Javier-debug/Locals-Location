@@ -33,7 +33,7 @@
     </div>
   </nav>
 
-  <!--Modal para registrarse-->
+  <!--Modal para ingresar-->
   <div class="modal fade" id="ingresarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -65,6 +65,109 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal de actualizar-->
+  <div class="modal fade" id="actualizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar local</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formaractualizar">
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="text" id="acStatus" required placeholder="Status">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="email" id="acImage" required placeholder="URL de la imagen">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="password" id="acUbicacion" required placeholder="Ubicacion">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <input type="submit" class="btn btn-primary" value="Actualizar">
+                <p class="error text-danger"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal de agregar-->
+  <div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar local</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formaagregar">
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="text" id="agStatus" required placeholder="Status">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="email" id="agImage" required placeholder="URL de la imagen">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="password" id="agUbicacion" required placeholder="Ubicacion">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <input type="submit" class="btn btn-primary" value="Agregar">
+                <p class="error text-danger"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Eliminar modal-->
+  <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar local</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Esta seguro de eliminar el local?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" onclick="eliminarLocal()">Eliminar</button>
         </div>
       </div>
     </div>

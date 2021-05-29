@@ -8,6 +8,7 @@ const salir = document.getElementById("salir");
 var localsList = document.getElementById("localsList");
 const body = document.getElementById("body");
 var imgLogo = document.getElementById("imgLogo");
+var coordenadasLocal = null;
 const datosdelacuenta = document.querySelector(".datosdelacuenta");
 //var userInfo = document.getElementById("userInfo");
 var uidEmpresa = "";
@@ -16,6 +17,8 @@ var locals = [];
 var localsDrawed = [];
 var API = "https://ancient-dawn-65400.herokuapp.com/api/locals/";
 const formaingresar = document.getElementById("formaingresar");
+const formaagregar = document.getElementById("formaagregar");
+const formaractualizar = document.getElementById("formaractualizar");
 
 auth.onAuthStateChanged(user => {
   if(user) {
@@ -117,7 +120,7 @@ function iniciaMapa() {
     });
     infoWindow.setContent(
       //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-      `<button type="button" onclick="agregar(${JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)})" class="btn btn-success">Agregar</button>`
+      `<button type="button" onclick="agregar(${JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)})" class="btn btn-success" data-toggle="modal" data-target="#actualizarModal">Agregar</button>`
     );
     infoWindow.open(map);
   });
@@ -157,7 +160,8 @@ var putLocalsInMap = () => {
 
     localsDrawed.push(marker);
     google.maps.event.addListener(marker, 'mouseover', function(){
-      var content = `<button type="button" onclick="actualizar(${local.coor})" class="btn btn-warning">Actualizar</button><button type="button" onclick="eliminar(${local.coor})" class="btn btn-danger">Eliminar</button>`
+      var content = `<button type="button" onclick="actualizar(${local.coor})" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
+      <button type="button" onclick="eliminar(${local.coor})" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
       var infowindow = new google.maps.InfoWindow({
         content : content,
         position : this.position
@@ -177,13 +181,20 @@ var putLocalsInMap = () => {
 } 
 
 function agregar(coor) {
-  console.log("Se agregara " +coor)
+  coordenadasLocal = coor;
+  console.log(coordenadasLocal)
 }
 
 function actualizar(coor) {
-  console.log("Se actualizara " +coor)
+  coordenadasLocal = coor;
+  console.log(coordenadasLocal)
 }
 
 function eliminar(coor) {
-  console.log("Se eliminara " +coor)
+  coordenadasLocal = coor;
+  console.log(coordenadasLocal)
+}
+
+function eliminarLocal() {
+  console.log("Entro")
 }
