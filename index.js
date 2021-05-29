@@ -108,6 +108,19 @@ function iniciaMapa() {
     center: coordenadas,
     zoom: 15
   });
+
+  map.addListener("click", (mapsMouseEvent) => {
+    // Close the current InfoWindow.
+    // Create a new InfoWindow.
+    infoWindow = new google.maps.InfoWindow({
+      position: mapsMouseEvent.latLng,
+    });
+    infoWindow.setContent(
+      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+      '<button type="button" class="btn btn-success">Success</button>'
+    );
+    infoWindow.open(map);
+  });
 }
 
 var  getLocals = async (userUID) => {
@@ -161,16 +174,3 @@ var putLocalsInMap = () => {
     localsList.appendChild(position)
   })
 } 
-
-map.addListener("click", (mapsMouseEvent) => {
-  // Close the current InfoWindow.
-  // Create a new InfoWindow.
-  infoWindow = new google.maps.InfoWindow({
-    position: mapsMouseEvent.latLng,
-  });
-  infoWindow.setContent(
-    //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    '<button type="button" class="btn btn-success">Success</button>'
-  );
-  infoWindow.open(map);
-});
