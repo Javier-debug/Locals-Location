@@ -187,12 +187,12 @@ function agregar(coor) {
 
 function actualizar(coor) {
   coordenadasLocal = coor;
-  console.log(coordenadasLocal)
+  console.log(coor)
 }
 
 function eliminar(coor) {
   coordenadasLocal = coor;
-  console.log(coordenadasLocal)
+  console.log(coor)
 }
 
 function eliminarLocal() {
