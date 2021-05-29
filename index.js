@@ -5,6 +5,7 @@ const unlogged = document.querySelector(".unlogged");
 const auth = firebase.auth();
 const db = firebase.firestore();
 const salir = document.getElementById("salir");
+var localsList = document.getElementById("localsList");
 const body = document.getElementById("body");
 var imgLogo = document.getElementById("imgLogo");
 const datosdelacuenta = document.querySelector(".datosdelacuenta");
@@ -126,7 +127,7 @@ var putLocalsInMap = () => {
   locals.forEach(local => {
     var marker = new google.maps.Marker({
       map: map,
-      title: '<strong>' + local.ubicacion + '</strong>,' ,
+      title: '<strong>' + local.ubicacion + '</strong>' ,
       position: local.coor
     });
 
@@ -139,5 +140,13 @@ var putLocalsInMap = () => {
       infowindow.open(map);
       setTimeout( function(){ infowindow.close(); }, 3000);
     });
+    let position = document.createElement("button");
+    position.className = "list-group-item list-group-item-action"
+    position.type = "button"
+    position.innerHTML = local.ubicacion
+    position.onclick = function() {
+      map.setCenter(local.coor)
+    }
+    localsList.appendChild(position)
   })
 } 
