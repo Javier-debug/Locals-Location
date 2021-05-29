@@ -1,0 +1,54 @@
+.logged-in, .logged-out {
+  display: none;
+}
+
+.list-locals {
+  padding-top: 20px;
+}
+
+.logged {
+  display: block;
+  background-color: white;
+  border-radius: 25px;
+}
+
+h1 {
+  color: white;
+}
+
+.unlogged {
+  display: none;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  padding: 25px;
+  margin: 25px 25px 25px 0px;
+}
+
+#salir, #login, #imgLogo {
+  cursor: pointer;
+}
+
+.user-info {
+  width: auto;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.image {
+  margin-top: 50px;
+}
+
+body {
+  height: 100%;
+    margin: 0;
+  background: rgb(116,116,116);
+background: linear-gradient(180deg, rgba(116,116,116,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 62%, rgba(116,116,116,1) 100%);
+background-repeat: no-repeat;
+    background-attachment: fixed;
+}

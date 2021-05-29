@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locals Location</title>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="https://kit.fontawesome.com/725910d27b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel='stylesheet' href='styles.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body id="body">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Locals Location</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <span class="navbar-text logged-in">
+        <img src="./img/logout.png" alt="Salir" style="background-color: white; border-radius: 50%;" width="40px" id="salir" height="auto">
+      </span>
+    </div>
+  </nav>
+
+  <!--Modal para registrarse-->
+  <div class="modal fade" id="ingresarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ingresar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formaingresar">
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="email" id="correo" required placeholder="Ingresa tu correo">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="password" id="contraseña" required placeholder="Ingresa tu contraseña">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <button class="btn btn-primary">Ingresar</button>
+                <p class="error text-danger"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container logged user-info">
+    <div class="row">
+      <div class="col-7 col-md-2">
+        <img width="auto" height="60px" style="border-radius: 5px;" data-toggle="modal" data-target="#miCuentaModal" alt="logo" id="imgLogo">
+      </div>
+    </div>
+  </div>
+
+  <!--Modal de miCuenta-->
+  <div class="modal fade" id="miCuentaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Datos de la empresa</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body datosdelacuenta">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Contenido principal-->
+  <div class="container logged">
+    <div class="row">
+      <div class="col-12 col-md-4 list-locals">
+        <h3>Locales actuales</h3>
+          <div class="list-group" style="overflow-y: scroll; height: 300px;" >
+            <a href="#" class="list-group-item list-group-item-action">
+              Cras justo odio
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+            <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+            
+          </div>
+      </div>
+      <div class="col-12 col-md-8">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container unlogged">
+    <div class="row">
+      <div class="col-12">
+        <h1>Inicie sesion para acceder a los servicios</h1>
+        <div class="image">
+          <img src="./img/profile.png" alt="login" id="login" width="200px" data-toggle="modal" data-target="#ingresarModal">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    var firebaseConfig = {
+  apiKey: "AIzaSyBt6aPBu6bEspCNGd1_peIOisvS9B8alBg",
+  authDomain: "sistemasgeo-306022.firebaseapp.com",
+  projectId: "sistemasgeo-306022",
+  storageBucket: "sistemasgeo-306022.appspot.com",
+  messagingSenderId: "813018402228",
+  appId: "1:813018402228:web:b540edcc6b2cf040aff6e1"
+};
+
+firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script src="./index.js"></script>
+  <!--API de google maps-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+</body>
+</html>
