@@ -117,7 +117,7 @@ function iniciaMapa() {
     });
     infoWindow.setContent(
       //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-      `<button type="button" onclick="agregar(${mapsMouseEvent.latLng.toJSON()})" class="btn btn-success">Success</button>`
+      `<button type="button" onclick="agregar(${JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)})" class="btn btn-success">Agregar</button>`
     );
     infoWindow.open(map);
   });
@@ -157,7 +157,7 @@ var putLocalsInMap = () => {
 
     localsDrawed.push(marker);
     google.maps.event.addListener(marker, 'mouseover', function(){
-      var content = `<button type="button" onclick="actualizar(${marker.position})" class="btn btn-warning">Actualizar</button><button type="button" onclick="eliminar(${marker.position})" class="btn btn-danger">Eliminar</button>`
+      var content = `<button type="button" onclick="actualizar(${local.coor})" class="btn btn-warning">Actualizar</button><button type="button" onclick="eliminar(${local.coor})" class="btn btn-danger">Eliminar</button>`
       var infowindow = new google.maps.InfoWindow({
         content : content,
         position : this.position
