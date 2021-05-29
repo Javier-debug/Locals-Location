@@ -124,10 +124,21 @@ var  getLocals = async (userUID) => {
 } 
 
 var putLocalsInMap = () => {
+  var icon = "";
   locals.forEach(local => {
+    if (local.status == "Excelente") {
+      icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+    } 
+    else if (local.status == "Estable") {
+      icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    } 
+    else {
+      icon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    }
     var marker = new google.maps.Marker({
       map: map,
       title: '<strong>' + local.ubicacion + '</strong>' ,
+      icon: icon,
       position: local.coor
     });
 
