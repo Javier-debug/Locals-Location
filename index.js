@@ -141,9 +141,9 @@ function iniciaMapa() {
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
-    coordenadasLocal = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    coordenadasLocal = mapsMouseEvent.latLng.toJSON()
     console.log(coordenadasLocal.lat)
-    console.log(coordenadasLocal.lng)
+    console.log(coordenadasLocal)
     infoWindow.setContent(
       //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
       `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal">Agregar</button>`
