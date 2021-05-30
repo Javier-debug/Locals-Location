@@ -89,6 +89,10 @@ formaagregar.addEventListener("submit", async(e) => {
 
   await fetch(API + uidEmpresa, {
     method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
     body: fd,
   })
   .then(async (response) => {
