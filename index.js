@@ -78,7 +78,7 @@ formaingresar.addEventListener("submit", (e) => {
   });
 })
 
-formaagregar.addEventListener("submit", async(e) => {
+formaagregar.addEventListener("submit", (e) => {
   e.preventDefault();
   const local = {
     coor: coordenadasLocal,
@@ -87,13 +87,17 @@ formaagregar.addEventListener("submit", async(e) => {
     ubicacion: formaagregar['agUbicacion'].value
   }
   console.log(local)
-  await fetch(API + uidEmpresa, {
+  const body = JSON.stringify(local)
+  fetch(API + uidEmpresa, {
     method: "POST",
-    body: local,
+    body: body,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
-  .then(async (response) => {
+  .then((response) => {
     borraMarcadores();
-    return await response;
+    return response;
   })
 })
 
