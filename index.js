@@ -92,7 +92,6 @@ formaagregar.addEventListener("submit", async(e) => {
     body: fd,
     headers: {
       'Content-Type': 'application/json'
-      
     },
   })
   .then(async (response) => {
@@ -143,7 +142,8 @@ function iniciaMapa() {
       position: mapsMouseEvent.latLng,
     });
     coordenadasLocal = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    console.log(coordenadasLocal)
+    console.log(coordenadasLocal.lat)
+    console.log(coordenadasLocal.lng)
     infoWindow.setContent(
       //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
       `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal">Agregar</button>`
