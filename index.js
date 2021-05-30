@@ -90,6 +90,9 @@ formaagregar.addEventListener("submit", async(e) => {
   await fetch(API + uidEmpresa, {
     method: "POST",
     body: fd,
+    headers: {
+      'Content-Type': 'application/json'
+    },
   })
   .then(async (response) => {
     borraMarcadores();
