@@ -80,21 +80,16 @@ formaingresar.addEventListener("submit", (e) => {
 
 formaagregar.addEventListener("submit", async(e) => {
   e.preventDefault();
-
-  var fd=new FormData();
-  fd.append("coor", coordenadasLocal)
-  fd.append("status", formaagregar['agStatus'].value)
-  fd.append("image", formaagregar['agImagen'].value)
-  fd.append("ubicacion", formaagregar['agUbicacion'].value)
   const local = {
     coor: coordenadasLocal,
     image: formaagregar['agImagen'].value,
     status: formaagregar['agStatus'].value,
     ubicacion: formaagregar['agUbicacion'].value
   }
+  console.log(local)
   await fetch(API + uidEmpresa, {
     method: "POST",
-    body: JSON.stringify(local),
+    body: local,
   })
   .then(async (response) => {
     borraMarcadores();
