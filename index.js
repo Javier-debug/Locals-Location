@@ -20,6 +20,7 @@ const formaingresar = document.getElementById("formaingresar");
 const formaagregar = document.getElementById("formaagregar");
 const formaractualizar = document.getElementById("formaractualizar");
 
+
 auth.onAuthStateChanged(user => {
   if(user) {
     db.collection("empresas").doc(user.uid).get().then(doc => {
@@ -122,7 +123,7 @@ function iniciaMapa() {
     console.log(coordenadasLocal)
     infoWindow.setContent(
       //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-      `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#actualizarModal">Agregar</button>`
+      `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal">Agregar</button>`
     );
     infoWindow.open(map);
   });
@@ -137,6 +138,7 @@ var  getLocals = async (userUID) => {
   })
   .then((data) => {
     locals = data;
+    console.log(locals)
     putLocalsInMap();
   })
 } 
@@ -184,6 +186,30 @@ var putLocalsInMap = () => {
   })
 } 
 
-function eliminarLocal() {
+async function eliminarLocal() {
   console.log("Entro")
+  var localId = "";
+  for (var a = 0; a < locals.length; a++) {
+    if (locals[a].coor.lat == coordenadasLocal.lat && locals[a].coor.lng == coordenadasLocal.lng) {
+      localId = locals[a].id;
+    }
+  }
+  await fetch(API + localId, {
+    method: "DELETE",
+  })
+  .then(async (response) => {
+    borraMarcadores();
+    return await response;
+  })
+}
+
+function borraMarcadores(){
+  for ( var i =0; i < localsDrawed.length; i++) {
+    localsDrawed[i].setMap(null);
+  };
+  while( placesList.hasChildNodes()){
+    localsList.removeChild(localsList.firstChild);
+  }
+  localsDrawed = [];
+  getLocals(uidEmpresa);
 }
