@@ -78,6 +78,25 @@ formaingresar.addEventListener("submit", (e) => {
   });
 })
 
+formaagregar.addEventListener("submit", async(e) => {
+  e.preventDefault();
+
+  var fd=new FormData();
+  fd.append("coor", coordenadasLocal)
+  fd.append("status", formaingresar['agStatus'].value)
+  fd.append("image", formaingresar['agImagen'].value)
+  fd.append("ubicacion", formaingresar['agUbicacion'].value)
+
+  await fetch(API + uidEmpresa, {
+    method: "POST",
+    body: fd
+  })
+  .then(async (response) => {
+    borraMarcadores();
+    return await response;
+  })
+})
+
 function mensajeError(codigo) {
   let mensaje = '';
   switch(codigo) {
