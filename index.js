@@ -181,16 +181,19 @@ var putLocalsInMap = () => {
 } 
 
 function agregar(coor) {
+  console.log("Entro")
   coordenadasLocal = coor;
   console.log(coordenadasLocal)
 }
 
 function actualizar(coor) {
+  console.log("Entro")
   coordenadasLocal = coor;
   console.log(coor)
 }
 
 function eliminar(coor) {
+  console.log("Entro")
   coordenadasLocal = coor;
   console.log(coor)
 }
