@@ -160,6 +160,7 @@ var putLocalsInMap = () => {
 
     localsDrawed.push(marker);
     google.maps.event.addListener(marker, 'mouseover', function(){
+      console.log(local.coor)
       var content = `<button type="button" onclick="actualizar(${local.coor})" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
       <button type="button" onclick="eliminar(${local.coor})" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
       var infowindow = new google.maps.InfoWindow({
