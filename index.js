@@ -162,6 +162,7 @@ var putLocalsInMap = () => {
 
     localsDrawed.push(marker);
     google.maps.event.addListener(marker, 'mouseover', function(){
+      coordenadasLocal = local.coor;
       console.log(local.coor)
       var content = `<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
