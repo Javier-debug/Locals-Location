@@ -83,9 +83,9 @@ formaagregar.addEventListener("submit", async(e) => {
 
   var fd=new FormData();
   fd.append("coor", coordenadasLocal)
-  fd.append("status", formaingresar['agStatus'].value)
-  fd.append("image", formaingresar['agImagen'].value)
-  fd.append("ubicacion", formaingresar['agUbicacion'].value)
+  fd.append("status", formaagregar['agStatus'].value)
+  fd.append("image", formaagregar['agImagen'].value)
+  fd.append("ubicacion", formaagregar['agUbicacion'].value)
 
   await fetch(API + uidEmpresa, {
     method: "POST",
