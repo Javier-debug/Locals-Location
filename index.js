@@ -101,6 +101,36 @@ formaagregar.addEventListener("submit", (e) => {
   })
 })
 
+formaractualizar.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  var localId = "";
+  for (var a = 0; a < locals.length; a++) {
+    if (locals[a].coor.lat == coordenadasLocal.lat && locals[a].coor.lng == coordenadasLocal.lng) {
+      localId = locals[a].id;
+    }
+  }
+  const local = {
+    coor: coordenadasLocal,
+    image: formaagregar['agImagen'].value,
+    status: formaagregar['agStatus'].value,
+    ubicacion: formaagregar['agUbicacion'].value
+  }
+  console.log(local)
+  const body = JSON.stringify(local)
+  fetch(API + localId, {
+    method: "PUT",
+    body: body,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    borraMarcadores();
+    return response;
+  })
+})
+
 function mensajeError(codigo) {
   let mensaje = '';
   switch(codigo) {
