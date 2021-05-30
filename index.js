@@ -118,9 +118,11 @@ function iniciaMapa() {
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
+    coordenadasLocal = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    console.log(coordenadasLocal)
     infoWindow.setContent(
       //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-      `<button type="button" onclick="agregar(${JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)})" class="btn btn-success" data-toggle="modal" data-target="#actualizarModal">Agregar</button>`
+      `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#actualizarModal">Agregar</button>`
     );
     infoWindow.open(map);
   });
@@ -161,8 +163,8 @@ var putLocalsInMap = () => {
     localsDrawed.push(marker);
     google.maps.event.addListener(marker, 'mouseover', function(){
       console.log(local.coor)
-      var content = `<button type="button" onclick="actualizar(${local.coor})" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
-      <button type="button" onclick="eliminar(${local.coor})" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
+      var content = `<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
       var infowindow = new google.maps.InfoWindow({
         content : content,
         position : this.position
@@ -180,24 +182,6 @@ var putLocalsInMap = () => {
     localsList.appendChild(position)
   })
 } 
-
-function agregar(coor) {
-  console.log("Entro")
-  coordenadasLocal = coor;
-  console.log(coordenadasLocal)
-}
-
-function actualizar(coor) {
-  console.log("Entro")
-  coordenadasLocal = coor;
-  console.log(coor)
-}
-
-function eliminar(coor) {
-  console.log("Entro")
-  coordenadasLocal = coor;
-  console.log(coor)
-}
 
 function eliminarLocal() {
   console.log("Entro")
