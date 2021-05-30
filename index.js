@@ -112,9 +112,9 @@ formaractualizar.addEventListener("submit", (e) => {
   }
   const local = {
     coor: coordenadasLocal,
-    image: formaagregar['agImagen'].value,
-    status: formaagregar['agStatus'].value,
-    ubicacion: formaagregar['agUbicacion'].value
+    image: formaagregar['acImagen'].value,
+    status: formaagregar['acStatus'].value,
+    ubicacion: formaagregar['acUbicacion'].value
   }
   console.log(local)
   const body = JSON.stringify(local)
