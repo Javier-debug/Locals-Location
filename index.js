@@ -207,7 +207,7 @@ function borraMarcadores(){
   for ( var i =0; i < localsDrawed.length; i++) {
     localsDrawed[i].setMap(null);
   };
-  while( placesList.hasChildNodes()){
+  while( localsList.hasChildNodes()){
     localsList.removeChild(localsList.firstChild);
   }
   localsDrawed = [];
