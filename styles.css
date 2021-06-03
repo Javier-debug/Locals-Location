@@ -52,3 +52,7 @@ background: linear-gradient(180deg, rgba(116,116,116,1) 0%, rgba(0,0,0,1) 35%, r
 background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+hr {
+  border: 2px solid black;
+}

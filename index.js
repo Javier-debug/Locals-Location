@@ -224,7 +224,7 @@ var putLocalsInMap = () => {
       <br/>
       <strong>Ubicacion: </strong> ${local.ubicacion}
       <br/>
-      <hr/>
+      <hr>
       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
       var infowindow = new google.maps.InfoWindow({
