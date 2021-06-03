@@ -219,12 +219,12 @@ var putLocalsInMap = () => {
       coordenadasLocal = local.coor;
       console.log(local.coor)
       var content = `<img src="${local.image}" width="auto" height="60px"/>
-      </br>
+      <br/>
       <strong>Status: </strong> ${local.status}
-      </br>
+      <br/>
       <strong>Ubicacion: </strong> ${local.ubicacion}
-      </br>
-      </hr>
+      <br/>
+      <hr/>
       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
       var infowindow = new google.maps.InfoWindow({
