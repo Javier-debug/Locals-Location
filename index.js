@@ -185,7 +185,7 @@ function iniciaMapa() {
       `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal">Agregar</button>`
     );
     infoWindow.open(map);
-    setTimeout( function(){ infowindow.close(); console.log("Entro")}, 3000);
+    setTimeout( function(){ infoWindow.close(); console.log("Entro")}, 3000);
   });
 }
 
