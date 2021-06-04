@@ -217,7 +217,6 @@ var putLocalsInMap = () => {
     });
 
     localsDrawed.push(marker);
-    var infowindow;
     google.maps.event.addListener(marker, 'mouseover', function(){
       coordenadasLocal = local.coor;
       console.log(local.coor)
@@ -230,7 +229,7 @@ var putLocalsInMap = () => {
       <hr>
       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
-      infowindow = new google.maps.InfoWindow({
+      var infowindow = new google.maps.InfoWindow({
         content : content,
         position : this.position
       });
@@ -244,6 +243,23 @@ var putLocalsInMap = () => {
     position.onclick = function() {
       map.setCenter(local.coor)
       infowindow.open(map);
+      coordenadasLocal = local.coor;
+      console.log(local.coor)
+      var content = `<img src="${local.image}" width="auto" height="60px"/>
+      <br/>
+      <strong>Status: </strong> ${local.status}
+      <br/>
+      <strong>Ubicacion: </strong> ${local.ubicacion}
+      <br/>
+      <hr>
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actualizarModal">Actualizar</button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">Eliminar</button>`
+      var infowindow = new google.maps.InfoWindow({
+        content : content,
+        position : local.coor
+      });
+      infowindow.open(map);
+      setTimeout( function(){ infowindow.close(); }, 3000);
     }
     localsList.appendChild(position)
   })
