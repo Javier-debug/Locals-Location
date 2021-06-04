@@ -226,6 +226,9 @@ var putLocalsInMap = () => {
     google.maps.event.addListener(marker, 'mouseover', function(){
       coordenadasLocal = local.coor;
       console.log(local.coor)
+      formaractualizar['acImagen'].value = local.image
+      formaractualizar['acStatus'].value = local.status
+      formaractualizar['acUbicacion'].value = local.ubicacion
       var content = `<img src="${local.image}" width="auto" height="60px"/>
       <br/>
       <strong>Status: </strong> ${local.status}
@@ -250,6 +253,9 @@ var putLocalsInMap = () => {
       map.setCenter(local.coor)
       coordenadasLocal = local.coor;
       console.log(local.coor)
+      formaractualizar['acImagen'].value = local.image
+      formaractualizar['acStatus'].value = local.status
+      formaractualizar['acUbicacion'].value = local.ubicacion
       var content = `<img src="${local.image}" width="auto" height="60px"/>
       <br/>
       <strong>Status: </strong> ${local.status}
