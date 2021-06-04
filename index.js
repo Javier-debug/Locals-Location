@@ -185,6 +185,7 @@ function iniciaMapa() {
 }
 
 async function getLocals(userUID) {
+  console.log("entro 2")
   await fetch(API + userUID, {
     method: "GET",
   })
