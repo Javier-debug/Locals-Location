@@ -180,6 +180,7 @@ function iniciaMapa() {
       `<button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal">Agregar</button>`
     );
     infoWindow.open(map);
+    setTimeout( function(){ infowindow.close(); }, 3000);
   });
 }
 
