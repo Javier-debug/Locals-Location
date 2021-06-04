@@ -176,7 +176,7 @@ function iniciaMapa() {
   map.addListener("click", (mapsMouseEvent) => {
     // Close the current InfoWindow.
     // Create a new InfoWindow.
-    infoWindow = new google.maps.InfoWindow({
+    var infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
     coordenadasLocal = mapsMouseEvent.latLng.toJSON()
