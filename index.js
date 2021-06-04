@@ -24,6 +24,7 @@ const formaractualizar = document.getElementById("formaractualizar");
 auth.onAuthStateChanged(user => {
   if(user) {
     db.collection("empresas").doc(user.uid).get().then(doc => {
+
       //body.style.backgroundColor = `#${doc.data().colores}`
       console.log(doc.data().logo)
       const html = `
@@ -35,6 +36,7 @@ auth.onAuthStateChanged(user => {
       datosdelacuenta.innerHTML = html;
       imgLogo.src = doc.data().logo;
     });
+    borraMarcadores();
     optionsMenu(user);
     getLocals(user.uid);
   }
