@@ -42,6 +42,7 @@ auth.onAuthStateChanged(user => {
   }
   else {
     //body.style.backgroundColor = "gray"
+    borraMarcadores();
     optionsMenu();
   }
 });
@@ -98,6 +99,8 @@ formaagregar.addEventListener("submit", (e) => {
     }
   })
   .then((response) => {
+    $('#agregarModal').modal('hide');
+    formaagregar.reset();
     borraMarcadores();
     return response;
   })
@@ -128,6 +131,8 @@ formaractualizar.addEventListener("submit", (e) => {
     }
   })
   .then((response) => {
+    $('#actualizarModal').modal('hide');
+    formaractualizar.reset();
     borraMarcadores();
     return response;
   })
@@ -277,6 +282,7 @@ async function eliminarLocal() {
     method: "DELETE",
   })
   .then(async (response) => {
+    $('#eliminarModal').modal('hide');
     borraMarcadores();
     return await response;
   })
