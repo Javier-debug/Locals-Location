@@ -242,7 +242,6 @@ var putLocalsInMap = () => {
     position.innerHTML = local.ubicacion
     position.onclick = function() {
       map.setCenter(local.coor)
-      infowindow.open(map);
       coordenadasLocal = local.coor;
       console.log(local.coor)
       var content = `<img src="${local.image}" width="auto" height="60px"/>
