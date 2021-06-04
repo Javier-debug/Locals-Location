@@ -2,7 +2,7 @@ const loggedout = document.querySelectorAll(".logged-out")
 const loggedin = document.querySelectorAll(".logged-in")
 const logged = document.querySelectorAll(".logged");
 const unlogged = document.querySelector(".unlogged");
-const auth = firebase.auth();
+var auth = firebase.auth();
 const db = firebase.firestore();
 var salir = document.getElementById("salir");
 var localsList = document.getElementById("localsList");
@@ -24,9 +24,6 @@ const formaractualizar = document.getElementById("formaractualizar");
 auth.onAuthStateChanged(user => {
   if(user) {
     db.collection("empresas").doc(user.uid).get().then(doc => {
-
-      //body.style.backgroundColor = `#${doc.data().colores}`
-      console.log(doc.data().logo)
       const html = `
       <img src="${doc.data().logo}" width="auto" height="60px"/>
       <p>Nombre comercial: ${doc.data().nombreC}</p>
@@ -36,7 +33,7 @@ auth.onAuthStateChanged(user => {
       datosdelacuenta.innerHTML = html;
       imgLogo.src = doc.data().logo;
     });
-    borraMarcadores();
+    console.log("Entro")
     optionsMenu(user);
     getLocals(user.uid);
   }
@@ -71,7 +68,6 @@ formaingresar.addEventListener("submit", (e) => {
   let contrasenia = formaingresar['contraseña'].value;
 
   auth.signInWithEmailAndPassword(correo, contrasenia).then(credencial => {
-    console.log(credencial)
     $('#ingresarModal').modal('hide');
     formaingresar.reset();
     formaingresar.querySelector('.error').innerHTML = ''
@@ -158,8 +154,7 @@ function mensajeError(codigo) {
 
 salir.addEventListener("click", (e) => {
   e.preventDefault();
-  auth.signOut().then(() => {
-  })
+  auth.signOut()
 })
 
 function iniciaMapa() {
