@@ -4,7 +4,7 @@ const logged = document.querySelectorAll(".logged");
 const unlogged = document.querySelector(".unlogged");
 const auth = firebase.auth();
 const db = firebase.firestore();
-const salir = document.getElementById("salir");
+var salir = document.getElementById("salir");
 var localsList = document.getElementById("localsList");
 const body = document.getElementById("body");
 var imgLogo = document.getElementById("imgLogo");
@@ -189,7 +189,7 @@ function iniciaMapa() {
   });
 }
 
-var  getLocals = async (userUID) => {
+async function getLocals(userUID) {
   await fetch(API + userUID, {
     method: "GET",
   })
