@@ -40,7 +40,7 @@ auth.onAuthStateChanged(user => {
   else {
     //body.style.backgroundColor = "gray"
     console.log(user)
-    borraMarcadores();
+    borraMarcadores(false);
     optionsMenu();
   }
 });
@@ -98,7 +98,7 @@ formaagregar.addEventListener("submit", (e) => {
   .then((response) => {
     $('#agregarModal').modal('hide');
     formaagregar.reset();
-    borraMarcadores();
+    borraMarcadores(true);
     return response;
   })
 })
@@ -130,7 +130,7 @@ formaractualizar.addEventListener("submit", (e) => {
   .then((response) => {
     $('#actualizarModal').modal('hide');
     formaractualizar.reset();
-    borraMarcadores();
+    borraMarcadores(true);
     return response;
   })
 })
@@ -185,13 +185,13 @@ function iniciaMapa() {
   });
 }
 
-async function getLocals(userUID) {
+function getLocals(userUID) {
   console.log("entro 2")
-  await fetch(API + userUID, {
+  fetch(API + userUID, {
     method: "GET",
   })
-  .then(async (response) => {
-    return await response.json()
+  .then((response) => {
+    return response.json()
   })
   .then((data) => {
     locals = data;
@@ -286,12 +286,12 @@ async function eliminarLocal() {
   })
   .then(async (response) => {
     $('#eliminarModal').modal('hide');
-    borraMarcadores();
+    borraMarcadores(true);
     return await response;
   })
 }
 
-function borraMarcadores(){
+function borraMarcadores(a){
   for ( var i =0; i < localsDrawed.length; i++) {
     localsDrawed[i].setMap(null);
   };
@@ -299,5 +299,7 @@ function borraMarcadores(){
     localsList.removeChild(localsList.firstChild);
   }
   localsDrawed = [];
-  getLocals(uidEmpresa);
+  if(a == true) {
+    getLocals(uidEmpresa);
+  }
 }
