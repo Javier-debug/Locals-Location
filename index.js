@@ -39,6 +39,7 @@ auth.onAuthStateChanged(user => {
   }
   else {
     //body.style.backgroundColor = "gray"
+    console.log(user)
     borraMarcadores();
     optionsMenu();
   }
